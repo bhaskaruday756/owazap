@@ -56,5 +56,5 @@ jobs:
         with:
           name: zap-dast-reports
           path: |
-            baseline-report.html
-            fullscan-report.html
+            zap_home/baseline-report.html
+            zap_home/fullscan-report.html
