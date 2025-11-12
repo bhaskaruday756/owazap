@@ -49,7 +49,6 @@ jobs:
             -quickurl $TARGET_URL \
             -quickout fullscan-report.html \
             -quickprogress \
-            -quickscan \
             -configfile ../zap/zap-fullscan.conf
 
       - name: Upload Reports
