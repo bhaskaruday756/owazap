@@ -1,0 +1,10 @@
+<context>
+  <name>TargetContext</name>
+  <urls>
+    <include>https://yourapp.example.com.*</include>
+  </urls>
+  <exclude>https://yourapp.example.com/logout</exclude>
+  <technologies>
+    <include>SQL, JavaScript, HTML</include>
+  </technologies>
+</context>
