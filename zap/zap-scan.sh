@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-TARGET_URL=${1:-"https://yourapp.example.com"}
+TARGET_URL=${1:-"https://practicetestautomation.com/"}
 ZAP_PATH="./zap_home"
 
 echo "[*] Starting Passive Scan..."
