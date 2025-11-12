@@ -1,9 +1,8 @@
 <context>
   <name>TargetContext</name>
   <urls>
-    <include>https://yourapp.example.com.*</include>
-  </urls>
-  <exclude>https://yourapp.example.com/logout</exclude>
+    <include>https://practicetestautomation.com/*</include>
+  
   <technologies>
     <include>SQL, JavaScript, HTML</include>
   </technologies>
