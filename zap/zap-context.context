@@ -1,9 +1,15 @@
-<context>
-  <name>TargetContext</name>
-  <urls>
-    <include>https://practicetestautomation.com/*</include>
-  
-  <technologies>
-    <include>SQL, JavaScript, HTML</include>
-  </technologies>
-</context>
+<authentication>
+  <method type="formBasedAuthentication">
+    <loginUrl>https://practicetestautomation.com/practice-test-login/</loginUrl>
+    <loginRequestData>username={%username%}&password={%password%}</loginRequestData>
+  </method>
+</authentication>
+
+<users>
+  <user name="testuser">
+    <credentials>
+      <username>student</username>
+      <password>Password123</password>
+    </credentials>
+  </user>
+</users>
