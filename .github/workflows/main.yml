@@ -21,14 +21,13 @@ jobs:
           java-version: 17
 
       - name: Download and extract OWASP ZAP
+        env:
+          ZAP_VERSION: "2.15.0"
         run: |
-          env:
-           ZAP_VERSION: "2.15.0"
-           ...
-          run: |
-            wget https://github.com/zaproxy/zaproxy/releases/download/v${ZAP_VERSION}/ZAP_${ZAP_VERSION}_Linux.tar.gz
-            tar -xzf ZAP_${ZAP_VERSION}_Linux.tar.gz
-            mv ZAP_${ZAP_VERSION} zap_home
+          wget https://github.com/zaproxy/zaproxy/releases/download/v${ZAP_VERSION}/ZAP_${ZAP_VERSION}_Linux.tar.gz -O zap.tar.gz
+          tar -xzf zap.tar.gz
+          mv ZAP_${ZAP_VERSION} zap_home
+          echo "ZAP downloaded and extracted successfully"
 
       - name: Run Passive Scan (Baseline)
         env:
@@ -37,7 +36,7 @@ jobs:
           ./zap_home/zap.sh -cmd \
             -addonupdate \
             -quickurl $TARGET_URL \
-          -quickout baseline-report.html \
+            -quickout baseline-report.html \
             -quickprogress \
             -configfile zap/zap-baseline.conf
 
