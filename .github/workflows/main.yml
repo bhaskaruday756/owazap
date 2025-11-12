@@ -38,7 +38,7 @@ jobs:
             -quickurl $TARGET_URL \
             -quickout baseline-report.html \
             -quickprogress \
-            -configfile zap/zap-baseline.conf
+            -configfile ../zap/zap-baseline.conf
 
       - name: Run Active Scan (Full)
         env:
@@ -50,7 +50,7 @@ jobs:
             -quickout fullscan-report.html \
             -quickprogress \
             -quickscan \
-            -configfile zap/zap-fullscan.conf
+            -configfile ../zap/zap-fullscan.conf
 
       - name: Upload Reports
         uses: actions/upload-artifact@v4
