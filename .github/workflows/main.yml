@@ -36,7 +36,7 @@ jobs:
           ./zap_home/zap.sh -cmd \
             -addonupdate \
             -quickurl $TARGET_URL \
-            -quickout baseline-report.html \
+            --quickout $(pwd)/reports/baseline-report.html \
             -quickprogress \
             -configfile ../zap/zap-baseline.conf
 
@@ -47,7 +47,7 @@ jobs:
           ./zap_home/zap.sh -cmd \
             -addonupdate \
             -quickurl $TARGET_URL \
-            -quickout fullscan-report.html \
+            -quickout $(pwd)/reports/fullscan-report.html \
             -quickprogress \
             -configfile ../zap/zap-fullscan.conf
 
@@ -55,6 +55,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: zap-dast-reports
-          path: |
-            zap_home/baseline-report.html
-            zap_home/fullscan-report.html
+          path: reports/
+            
