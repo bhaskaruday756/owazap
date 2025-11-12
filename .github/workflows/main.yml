@@ -36,7 +36,7 @@ jobs:
           ./zap_home/zap.sh -cmd \
             -addonupdate \
             -quickurl $TARGET_URL \
-            --quickout $(pwd)/reports/baseline-report.html \
+            -quickout $(pwd)/reports/baseline-report.html \
             -quickprogress \
             -configfile ../zap/zap-baseline.conf
 
