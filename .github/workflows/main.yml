@@ -27,33 +27,40 @@ jobs:
           wget https://github.com/zaproxy/zaproxy/releases/download/v${ZAP_VERSION}/ZAP_${ZAP_VERSION}_Linux.tar.gz -O zap.tar.gz
           tar -xzf zap.tar.gz
           mv ZAP_${ZAP_VERSION} zap_home
-          echo "ZAP downloaded and extracted successfully"
+          echo " ZAP downloaded and extracted successfully"
+
+      #  Create writable reports directory before scans
+      - name: Create reports directory
+        run: mkdir -p reports
 
       - name: Run Passive Scan (Baseline)
         env:
           TARGET_URL: ${{ secrets.TARGET_URL }}
         run: |
+          echo " Starting ZAP Baseline Scan..."
           ./zap_home/zap.sh -cmd \
             -addonupdate \
-            -quickurl $TARGET_URL \
-            -quickout $(pwd)/reports/baseline-report.html \
+            -quickurl "$TARGET_URL" \
+            -quickout "$(pwd)/reports/baseline-report.html" \
             -quickprogress \
-            -configfile ../zap/zap-baseline.conf
+            -configfile ./zap/zap-baseline.conf
+          echo " Baseline Scan complete: reports/baseline-report.html"
 
       - name: Run Active Scan (Full)
         env:
           TARGET_URL: ${{ secrets.TARGET_URL }}
         run: |
+          echo " Starting ZAP Full Scan..."
           ./zap_home/zap.sh -cmd \
             -addonupdate \
-            -quickurl $TARGET_URL \
-            -quickout $(pwd)/reports/fullscan-report.html \
+            -quickurl "$TARGET_URL" \
+            -quickout "$(pwd)/reports/fullscan-report.html" \
             -quickprogress \
-            -configfile ../zap/zap-fullscan.conf
+            -configfile ./zap/zap-fullscan.conf
+          echo " full Scan complete: reports/fullscan-report.html"
 
       - name: Upload Reports
         uses: actions/upload-artifact@v4
         with:
           name: zap-dast-reports
           path: reports/
-            
